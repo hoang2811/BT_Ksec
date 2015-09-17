@@ -79,5 +79,6 @@
 
 ![](http://imgur.com/FBSmUfw.png)
 
->Kí hiệu: + L7H : Layer 7 header.
-		      + L2F : Trình sử lỗi FCS.
+```Kí hiệu: + L7H : Layer 7 header.
+            + L2F : Trình sử lỗi FCS.```
+     
