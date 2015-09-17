@@ -79,6 +79,37 @@
 
 ![](http://imgur.com/FBSmUfw.png)
 
-```Kí hiệu: + L7H : Layer 7 header.
-            + L2F : Trình sử lỗi FCS.```
+```
+Kí hiệu: + L7H : Layer 7 header.
+         + L2F : Trình sử lỗi FCS.
+```
      
+* Mô hình OSI là mô hình truyền tải dữ liệu đồng cấp. Đàu tiên khi máy tính cần gửi  dữ liệu (data) thì nó sẽ đi theo từ lớp 7 -> lớp 1, chuyển thành dãy bit nhị phân sau đó khi qua đến bên kia sẽ theo thứ tự ngược lại từ 1->7. Cụ thể là:
+	* Khi các thông tin được đưa vào lớp 7 (Application) sẽ được chuyển xuống lớp 6 (Presentation) để mã hóa và nén dữ liệu.
+	* Dữ liệu sẽ được chuyển xuống lớp 5 (Session) sẽ được bổ xung thêm thông tin về phiên giao dịch.
+	* Tại lớp 4 (Transport) dữ liệu sẽ được cắt thành nhiều Segment và bổ xung thêm thông tin về phương thức vận chuyển.
+	* Xuống lớp 3 (network) mỗi Segment sẽ được cắt ra thành nhiều Packet và bổ xung thêm thông tin định tuyến.
+	* Ở lớp 2 (datalink) mỗi Packet lại cắt ra thành nhiều Frame bổ xung thêm thông tin kiểm tra gói tin. Ngoài ra ở lớp này còn có thêm quá trình kiểm tra lỗi FCS.
+	* Đến lớp cuối cùng lớp 1 (physical) mỗi Frame sẽ được chuyển thành các bit 0 và 1 rồi được đẩy lên các phương tiện truyền dẫn. 
+	* Sau khi qua đến bên máy nhận thì thực hiện quá trình ngược lại từ lớp 7 -> lớp 1.
+
+
+###IV. Mô hình TCP/IP
+
+![](http://i.imgur.com/ELlE7ni.png)
+
+#####So sánh giữa mô hình OSI và TCP/IP
+
+* Giống nhau:
+
+	* Đều phân lớp chức năng
+	* Đều có lớp vận chuyển và lớp mạng.
+	* Chuyển gói là hiển nhiên.
+	* Đều có mối quan hệ trên dưới, ngang hàng.
+	
+* Khác nhau:
+
+	* TCP/IP gộp lớp trình bày và lớp phiên vào lớp ứng dụng.
+	* TCP/IP gộp lớp vật lý và lớp liên kết dữ liệu vào lớp truy nhập mạng.
+	* TCP/IP đơn giản vì có ít lớp hơn.
+	* OSI không có khái niệm chuyển phát thiếu tin cậy ở lớp 4 như UDP của TCP/IP
